@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import profileImg from "../assets/img/MyProfileNew.png";
-import { ArrowRightCircle } from 'react-bootstrap-icons';
+import { ArrowDownCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
@@ -47,6 +47,15 @@ export const Banner = () => {
     }
   }
 
+  const downloadCV = () => {
+    const link = document.createElement('a');
+    link.href = '/Hasitha_CV.pdf'; // This looks inside your public folder
+    link.download = 'Hasitha_CV.pdf'; // The name the file will save as
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
   return (
     <section className="banner" id="home">
       <Container>
@@ -59,7 +68,7 @@ export const Banner = () => {
                 <h1>{`Hi! I'm Hasitha`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Web Designer", "UI/UX Designer" ]'><span className="wrap">{text}</span></span></h1>
                   <p>UI/UX designer & aspiring front-end developer from Sri Lanka.
                      I combine design thinking with coding to build engaging web applications.</p>
-                  <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
+                  <button onClick={downloadCV}>Download Resume<ArrowDownCircle size={25} /></button>
               </div>}
             </TrackVisibility>
           </Col>

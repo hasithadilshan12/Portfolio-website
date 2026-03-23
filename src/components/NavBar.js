@@ -37,8 +37,10 @@ export const NavBar = () => {
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
         <Container>
           <Navbar.Brand href="/">
-            <img src={logo} alt="Logo" />
-          </Navbar.Brand>
+  <span style={{ color: '#fff', fontSize: '32px', fontWeight: 'bold', letterSpacing: '1px' }}>
+    R.B.Hasitha Dilshan
+  </span>
+</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav">
             <span className="navbar-toggler-icon"></span>
           </Navbar.Toggle>
@@ -50,10 +52,16 @@ export const NavBar = () => {
             </Nav>
             <span className="navbar-text">
               <div className="social-icon">
-                <a href="#"><img src={navIcon1} alt="" /></a>
-                <a href="#"><img src={navIcon2} alt="" /></a>
-                <a href="#"><img src={navIcon3} alt="" /></a>
-              </div>
+  <a href="https://www.linkedin.com/in/hasithadilshan678" target="_blank" rel="noreferrer">
+  <img src={navIcon1} alt="LinkedIn" />
+</a>
+  <a href="https://www.facebook.com/share/1ApTERgVNZ/" target="_blank" rel="noreferrer">
+    <img src={navIcon2} alt="facebook" />
+  </a>
+  <a href="https://www.instagram.com/hasitha_dilshan_hdj?igsh=MTV6cWFma20wN2p1ZQ==" target="_blank" rel="noreferrer">
+    <img src={navIcon3} alt="Instagram" />
+  </a>
+</div>
               <HashLink to='#connect'>
                 <button className="vvd"><span>Let’s Connect</span></button>
               </HashLink>

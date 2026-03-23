@@ -1,26 +1,33 @@
 import { Container, Row, Col } from "react-bootstrap";
-import logo from "../assets/img/logo.svg";
-import navIcon1 from "../assets/img/nav-icon1.svg";
-import navIcon2 from "../assets/img/nav-icon2.svg";
-import navIcon3 from "../assets/img/nav-icon3.svg";
+import navIcon1 from "../assets/img/nav-icon1.svg"; // LinkedIn
+import navIcon2 from "../assets/img/nav-icon2.svg"; // GitHub / Facebook
+import navIcon3 from "../assets/img/nav-icon3.svg"; // Instagram
 
 export const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer" style={{ padding: '100px 0 50px 0', backgroundColor: '#121212' }}>
       <Container>
-        <Row className="align-items-center">
-          {/* We removed the MailchimpForm component from here */}
-          <Col size={12} sm={6}>
-            <img src={logo} alt="Logo" />
-          </Col>
-          <Col size={12} sm={6} className="text-center text-sm-end mt-4 mt-sm-0">
+        <Row className="align-items-center justify-content-center">
+          
+          {/* Centered Social Links & Copyright */}
+          <Col size={12} className="text-center">
             <div className="social-icon">
-              <a href="#"><img src={navIcon1} alt="Icon" /></a>
-              <a href="#"><img src={navIcon2} alt="Icon" /></a>
-              <a href="#"><img src={navIcon3} alt="Icon" /></a>
+              {/* Add your actual links here too! */}
+              <a href="https://www.linkedin.com/in/hasithadilshan678" target="_blank" rel="noreferrer">
+  <img src={navIcon1} alt="LinkedIn" />
+</a>
+              <a href="https://www.facebook.com/share/1ApTERgVNZ/" target="_blank" rel="noreferrer">
+                <img src={navIcon2} alt="Facebook" />
+              </a>
+              <a href="https://www.instagram.com/hasitha_dilshan_hdj?igsh=MTV6cWFma20wN2p1ZQ==" target="_blank" rel="noreferrer">
+                <img src={navIcon3} alt="Instagram" />
+              </a>
             </div>
-            <p>Copyright 2024. All Rights Reserved</p>
+            <p style={{ marginTop: '20px', color: '#B8B8B8' }}>
+              Copyright 2026. All Rights Reserved.
+            </p>
           </Col>
+
         </Row>
       </Container>
     </footer>
