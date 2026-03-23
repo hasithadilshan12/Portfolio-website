@@ -26,13 +26,48 @@ export const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonText("Sending...");
-    
-    // We will add the actual email-sending magic here in the next step!
-    setTimeout(() => {
-        setButtonText("Send");
-        setStatus({ succes: true, message: 'Message sent successfully!'});
-        setFormDetails(formInitialDetails);
-    }, 2000); // Temporary fake delay to test the button
+
+    // 1. We format the data to send to Web3Forms
+    const formData = new FormData();
+    formData.append("access_key", "3803dc8e-02ff-4372-9a12-8c54f3cf42d3"); // <--- PASTE YOUR KEY HERE
+    formData.append("name", `${formDetails.firstName} ${formDetails.lastName}`);
+    formData.append("email", formDetails.email);
+    formData.append("phone", formDetails.phone);
+    formData.append("message", formDetails.message);
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    try {
+      // 2. We send the data securely
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: json
+      });
+      
+      const result = await response.json();
+
+      // 3. We show a success or error message
+      if (result.success) {
+        setStatus({ success: true, message: 'Message sent successfully!'});
+        setFormDetails(formInitialDetails); 
+        // ADD THIS LINE to hide the popup after 3 seconds
+        setTimeout(() => setStatus({}), 3000); 
+      } else {
+        setStatus({ success: false, message: 'Something went wrong, please try again.'});
+        // ADD THIS LINE
+        setTimeout(() => setStatus({}), 3000);
+      }
+    } catch (error) {
+      console.log(error);
+      setStatus({ success: false, message: 'Something went wrong, please try again.'});
+    }
+
+    setButtonText("Send");
   };
 
   return (
@@ -70,11 +105,11 @@ export const Contact = () => {
                       <button type="submit"><span>{buttonText}</span></button>
                     </Col>
                     {
-                      status.message &&
-                      <Col>
-                        <p className={status.success === false ? "danger" : "success"} style={{ marginTop: '15px' }}>{status.message}</p>
-                      </Col>
-                    }
+  status.message &&
+  <div className={`toast-message ${status.success === false ? "danger" : "success"}`}>
+    {status.message}
+  </div>
+}
                   </Row>
                 </form>
               </div>}
