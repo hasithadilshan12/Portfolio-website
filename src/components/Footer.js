@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import navIcon1 from "../assets/img/nav-icon1.svg"; // LinkedIn
-import navIcon2 from "../assets/img/nav-icon2.svg"; // GitHub / Facebook
+import navIcon2 from "../assets/img/nav-icon2.svg"; // Facebook
 import navIcon3 from "../assets/img/nav-icon3.svg"; // Instagram
 
 export const Footer = () => {
